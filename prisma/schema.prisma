@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGO_URI_PRISMA")
+}
+
+model Providers {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  providerId String @unique
+  logo String
+  color String
+  darkMode Boolean
+  language Lang @default(pt)
+  country String
+}
+
+model Requests {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  providerId String
+  requestIdentifier String? @unique
+  email String
+  location Location?
+  accuracy Boolean?
+  phone String?
+  notificationSMS Boolean?
+  country String?
+  timestamp DateTime
+}
+
+type Location {
+  type  String
+  coordinates Float[]
+} 
+
+enum Lang {
+  pt
+  en
+  es
+}
