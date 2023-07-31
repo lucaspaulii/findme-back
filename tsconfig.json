@@ -9,7 +9,7 @@
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "rootDirs": ["src", "tests"],
-    "lib": ["ES2021.String"],
+    "lib": ["ES2021.String", "DOM"],
     "baseUrl": "src",
     "paths": {
       "@/*": ["*"]
